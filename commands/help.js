@@ -12,10 +12,10 @@ module.exports.run = async (bot, message, args) => {
         var embed = new Discord.MessageEmbed()
             .setAuthor(`Here is the Avaible Commands to use:`)
             .addFields(
-                { name: 'List of Commands:', value: '```embed | mute | unmute | hi | twice | meme | nayeon | jeongyeon | sana | momo | jihyo | mina | dahyun | chaeyoung | tzuyu```', inline: false},
-                { name: 'Prefix', value: '```=```', inline: true},
-                { name: 'Command Information', value: '```=help (command)```', inline: true},
-                { name: 'Note', value: '```The pictures provided changes depending on the website`s post/s -Avocado```', inline: false},
+                { name: 'List of Commands:', value: '```embed | tempmute | snipe | twice | nayeon | jeongyeon | sana | momo | jihyo | mina | dahyun | chaeyoung | tzuyu```', inline: false},
+                { name: 'Prefix', value: '```=```', inline: false},
+                { name: 'Command Information', value: '```=help (command)```', inline: false},
+                { name: 'Note', value: "```The pictures provided changes depending on the website's post/s -Avocado```", inline: true},
             )
             .setColor('#00FFF3')
             .setThumbnail('https://images-ext-1.discordapp.net/external/6BmEilP-kdiS88W527pf_TyLewrmOE7UlbOv8rveBTo/https/images-ext-1.discordapp.net/external/fpl_K9SRCRp0s6RrB4y4RfW6lHgFivQqMVS9JBFws38/%253Fsize%253D128/https/cdn.discordapp.com/icons/322047437067911170/a_88d1f004e3292afb187abb263e0e3a44.gif')
@@ -49,8 +49,8 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.config = {
     name: "help",
-    description: "",
+    description: "Shows the Commands available",
     usage: "=help",
     accessableby: "Members",
-    aliases: []
+    aliases: ["h"]
 }

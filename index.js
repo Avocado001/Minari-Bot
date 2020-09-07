@@ -46,9 +46,16 @@ bot.on("message", async message => {
 
 })
 
-//AUTOMESSAGE
-//Removed ko na
-//AUTOMESSAGE ENDS
+//Deleted Messages
+bot.snipes = new Map();
+bot.on('messageDelete', function(message, channel){
+bot.snipes.set(message.channel.id,{
+    content:message.content,
+    author:message.author.tag,
+    img:message.attachments.first() ? message.attachments.first().proxyURL : null
+})
+})
+//Deleted Messages
 
 //CHATBOX STARTS HERE BOBO(Next Time Nalang Avocads)
 
