@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 
 
-module.exports.run = async(bot, message, args) =>{
+module.exports.run = (bot, message, args) =>{
     if(message.member.hasPermission('MANAGE_ROLES')) {
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
