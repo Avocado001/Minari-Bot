@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 
 module.exports.run = (bot, message, args) =>{
-    if(message.member.hasPermission('MANAGE_ROLES')) {
+    if (message.member.roles.cache.some(r=>["Bot Commander 🔰", "JY 🍭 Park", "JYP Staff ✴️","Youtube Channel Admin ▶️","Turbo Master 💎"].includes(r.name)) ) {
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
 

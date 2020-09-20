@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, argsode ) => {
     let arg = messageArray.slice(1);
     let cmd = messageArray[0];
 
-     if(cmd === '/tempmute', '/mute'){
+     if(cmd === '=tempmute' || cmd === '=mute'){
         if(message.member.hasPermission('MANAGE_ROLES')) {
             var member = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(arg[0]));
             if(!member) return message.reply('Please Provide a Member to TempMute.')
@@ -14,18 +14,22 @@ module.exports.run = async (bot, message, argsode ) => {
             //Immunity Section
             if (member.roles.cache.some(r=>["Bot Commander 🔰"].includes(r.name)) ) {
                 return message.reply("Minari cant musically mute the ones who made me<a:minablush:752739433458958336>")
+                .then(msg => msg.delete({timeout:5000}))
               }
 
               if (member.roles.cache.some(r=>["JY 🍭 Park"].includes(r.name)) ) {
                 return message.reply("Minari cant musically mute PDnim<a:minaoops:752739151409053798>")
+                .then(msg => msg.delete({timeout:5000}))
               }
 
               if (member.roles.cache.some(r=>["JYP Staff ✴️"].includes(r.name)) ) {
                 return message.reply("Minari cant musically mute JYP Staffs<a:minano:752747074394652702>")
+                .then(msg => msg.delete({timeout:5000}))
               }
 
               if (member.roles.cache.some(r=>["🔌 Bots🤖"].includes(r.name)) ) {
                 return message.reply("You cant musically mute bots silly<a:minabang:752735962068549672>")
+                .then(msg => msg.delete({timeout:5000}))
               }
               //Immunity Section
 
