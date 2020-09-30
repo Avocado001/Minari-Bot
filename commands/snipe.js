@@ -6,15 +6,29 @@ module.exports.run = (bot, message, args) =>{
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
 
-        const msg = bot.snipes.get(message.channel.id)
-        if(!msg)return message.channel.send("There are no deleted messages")
+        const snipes = bot.snipes.get(message.channel.id) || [];
+	const msg = snipes[args[0] - 1 || 0];
+
+        if (!msg) {
+		const embed = new Discord.MessageEmbed()
+			.setDescription("Snipes not available");
+		return message.channel.send(embed);
+	}
+
         const embed = new Discord.MessageEmbed()
-        .setAuthor(msg.author)
-        .setDescription(msg.content)
-        if(msg.img)embed.setImage(msg.img)
-        message.channel.send(embed)
-    }else {
-        return message.channel.send('You dont have perms.')
+	        .setAuthor(
+			msg.author.tag,
+        		msg.author.displayAvatarURL({ dynamic: true, size: 256 })
+	 	)
+	      	.setDescription(msg.content)
+		.setFooter(`Date: ${msg.date} | ${args[0] || 1}/${snipes.length}`);
+
+	if (msg.attachment) embed.setImage(msg.attachment);
+	message.channel.send(embed)
+    } else {
+	const embed = new Discord.MessageEmbed()
+                        .setDescription("You need some milk. (You don\'t have permissions to do this).");
+        return message.channel.send(embed);
     }
 
 }

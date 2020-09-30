@@ -4,8 +4,10 @@ const botsettings = require('./botsettings.json');
 const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("guildMemberAdd", member => {
-    const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === 'welcome')
-    welcomeChannel.send (`Welcome! ${member}`)
+    const welcomeChannel = member.guild.channels.cache.find(channel => channel.name === '💬✮〢𝐆eneral-𝐂hat')
+    welcomeChannel.send (`Wilkins! ${member} , Please proceed to <#726399048726216714> to get your Roles :point_right::point_left: 
+    -Janitor ng JT`)
+    welcomeChannel.send (`<a:Avocado:756798030274887710> <a:kndrckjvr:756800055490642001>`)
 })
 
 require("./util/eventHandler")(bot)
@@ -47,18 +49,14 @@ bot.on("message", async message => {
 })
 
 //Deleted Messages
-bot.snipes = new Map();
+bot.snipes = new Discord.Collection();
 bot.on('messageDelete', function(message, channel){
-bot.snipes.set(message.channel.id,{
-    content:message.content,
-    author:message.author.tag,
-    img:message.attachments.first() ? message.attachments.first().proxyURL : null
-})
+  require("./events/messageDelete")(message);
 })
 //Deleted Messages
 
-//CHATBOX STARTS HERE BOBO(Next Time Nalang Avocads)
+//Incase of Raid
 
-//ENDS HERE BOBO(Di pede)
+//Insert Auto Kick Snippet(Nakay Avocado)
 
 bot.login(botsettings.token);
