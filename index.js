@@ -59,4 +59,4 @@ bot.on('messageDelete', function(message, channel){
 
 //Insert Auto Kick Snippet(Nakay Avocado)
 
-bot.login(botsettings.token);
+bot.login(process.env.DJS_TOKEN);
