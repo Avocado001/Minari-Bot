@@ -31,15 +31,6 @@ module.exports.run = async (bot, message, args) => {
                 var link = 'https://reddit.com' + index.permalink
                 var subRedditName = index.subreddit_name_prefixed
 
-                if (index.post_hint !== 'image') {
-                    const textembed = new Discord.RichEmbed()
-                        .setTitle(subRedditName)
-                        .setColor('#FF1744')
-                        .setDescription(`[${title}](${link})\n\n${text}`)
-                        .setURL(`https://reddit.com/${subRedditName}`)
-
-                    message.channel.send(textembed)
-                }
                 console.log(image);
                 const imageembed = new Discord.MessageEmbed()
                     .setTitle(subRedditName)
