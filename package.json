@@ -21,6 +21,7 @@
     "moment": "^2.29.0",
     "moment-timezone": "^0.5.31",
     "ms": "^2.1.2",
-    "random-puppy": "^1.1.0"
+    "random-puppy": "^1.1.0",
+    "got": "^11.8.2"
   }
 }
