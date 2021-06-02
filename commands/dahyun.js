@@ -1,6 +1,6 @@
 const https = require('https');
 const Discord = require('discord.js');
-const url = 'https://www.reddit.com/r/dahyun/hot/.json?limit=100'
+const url = 'https://www.reddit.com/r/dahyun/hot/.json?limit=100';
 
 module.exports.run = async (bot, message, args) => {  
 
