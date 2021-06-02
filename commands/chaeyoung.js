@@ -11,31 +11,31 @@ module.exports.run = async (bot, message, args) => {
             })
 
             result.on('end', () => {
-                let response = JSON.parse(body)
-                let index = response.data.children[Math.floor(Math.random() * 99) + 1].data
+                const response = JSON.parse(body)
+                const index = response.data.children[Math.floor(Math.random() * 99) + 1].data
 
                 if (index.post_hint !== 'image') {
 
-                    let text = index.selftext
+                    const text = index.selftext
                     const textembed = new Discord.MessageEmbed()
                         .setTitle(subRedditName)
-                        .setColor('#FF1744')
+                        .setColor(9384170)
                         .setDescription(`[${title}](${link})\n\n${text}`)
                         .setURL(`https://reddit.com/${subRedditName}`)
 
                     message.channel.send(textembed)
                 }
 
-                let image = index.preview.images[0].source.url.replace('&amp;', '&')
-                let title = index.title
-                let link = 'https://reddit.com' + index.permalink
-                let subRedditName = index.subreddit_name_prefixed
+                const image = index.preview.images[0].source.url.replace('&amp;', '&')
+                const title = index.title
+                const link = 'https://reddit.com' + index.permalink
+                const subRedditName = index.subreddit_name_prefixed
 
                 console.log(image);
                 const imageembed = new Discord.MessageEmbed()
                     .setTitle(subRedditName)
                     .setImage(image)
-                    .setColor('#FF1744')
+                    .setColor(9384170)
                     .setDescription(`[${title}](${link})`)
                     .setURL(`https://reddit.com/${subRedditName}`)
                 message.channel.send(imageembed)
