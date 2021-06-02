@@ -13,6 +13,11 @@ module.exports.run = async (bot, message, args) => {
             result.on('end', () => {
                 const response = JSON.parse(body)
                 const index = response.data.children[Math.floor(Math.random() * 99) + 1].data
+                
+                const image = index.preview.images[0].source.url.replace('&amp;', '&')
+                const title = index.title
+                const link = 'https://reddit.com' + index.permalink
+                const subRedditName = index.subreddit_name_prefixed
 
                 if (index.post_hint !== 'image') {
 
@@ -25,11 +30,6 @@ module.exports.run = async (bot, message, args) => {
 
                     message.channel.send(textembed)
                 }
-
-                const image = index.preview.images[0].source.url.replace('&amp;', '&')
-                const title = index.title
-                const link = 'https://reddit.com' + index.permalink
-                const subRedditName = index.subreddit_name_prefixed
 
                 console.log(image);
                 const imageembed = new Discord.MessageEmbed()
