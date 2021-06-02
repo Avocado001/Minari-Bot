@@ -18,9 +18,9 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.config = {
-    name: "dahyun",
-    description: "Send an image of Kim Dahyun",
-    usage: "=dahyun",
+    name: "chaeyoung",
+    description: "Send an image of Son Chaeyoung",
+    usage: "=chaeyoung",
     accessableby: "Members",
-    aliases: ["dubu", "tofu", "dinosaur", "bibimbap", "bonjuruu", "waowexpensive", "eagle"]
+    aliases: ["chae", "cub", "tiger", "smol", "babybeast", "strawberry", "seyoung"]
 }
