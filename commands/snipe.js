@@ -23,7 +23,7 @@ module.exports.run = (bot, message, args) =>{
 	      	.setDescription(msg.content)
 		.setFooter(`Date: ${msg.date} | ${args[0] || 1}/${snipes.length}`);
 
-	if (msg.img) embed.setImage(msg.img);
+	if (msg.image) embed.setImage(msg.image);
 	message.channel.send(embed)
     } else {
 	const embed = new Discord.MessageEmbed()
