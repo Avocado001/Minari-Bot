@@ -20,17 +20,12 @@ module.exports.run = async (bot, message, args) => {
                 const link = 'https://reddit.com' + index.permalink
                 const subRedditName = index.subreddit_name_prefixed
                 
-                const [post] = response.data.children;
-                const memeUpvotes = post.data.ups;
-		        const memeNumComments = post.data.num_comments;
-
                 console.log(image);
                 const imageembed = new Discord.MessageEmbed()
                     .setTitle(title)
                     .setImage(image)
                     .setColor(9384170)
                     .setURL(`https://reddit.com/${subRedditName}`)
-                    .setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
                 message.channel.send(imageembed)
             }).on('error', function (e) {
                 console.log('Got an error: ', e)
