@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args) => {
                     var text = index.selftext
                     const textembed = new Discord.MessageEmbed()
                         .setTitle(subRedditName)
-                        .setColor(9384170)
+                        .setColor('#FF1744')
                         .setDescription(`[${title}](${link})\n\n${text}`)
                         .setURL(`https://reddit.com/${subRedditName}`)
 
@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
                 if (index.post_hint !== 'image') {
                     const textembed = new Discord.RichEmbed()
                         .setTitle(subRedditName)
-                        .setColor(9384170)
+                        .setColor('#FF1744')
                         .setDescription(`[${title}](${link})\n\n${text}`)
                         .setURL(`https://reddit.com/${subRedditName}`)
 
@@ -44,7 +44,7 @@ module.exports.run = async (bot, message, args) => {
                 const imageembed = new Discord.MessageEmbed()
                     .setTitle(subRedditName)
                     .setImage(image)
-                    .setColor(9384170)
+                    .setColor('#FF1744')
                     .setDescription(`[${title}](${link})`)
                     .setURL(`https://reddit.com/${subRedditName}`)
                 message.channel.send(imageembed)
