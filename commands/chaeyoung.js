@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-const randomPuppy = require('got');
+const got = require('got');
 
 module.exports.run = async (bot, message, args) => {
         const embed = new Discord.MessageEmbed()
