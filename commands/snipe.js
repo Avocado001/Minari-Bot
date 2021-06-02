@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 
 module.exports.run = (bot, message, args) =>{
-    if (message.member.roles.cache.some(r=>["Bot Commander 🔰", "JY 🍭 Park", "JYP Staff ✴️","Youtube Channel Admin ▶️","Turbo Master 💎"].includes(r.name)) ) {
+    if (message.member.roles.cache.some(r=>["Bot Commander 🔰", "JY 🍭 Park", "JYP Staff ✴️","Youtube Channel Admin ▶️","Turbo Master 💎","Tier Z 🌈│𝕍𝕀𝕆𝕋"].includes(r.name)) ) {
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
 
@@ -23,7 +23,7 @@ module.exports.run = (bot, message, args) =>{
 	      	.setDescription(msg.content)
 		.setFooter(`Date: ${msg.date} | ${args[0] || 1}/${snipes.length}`);
 
-	if (msg.attachment) embed.setImage(msg.attachment);
+	if (msg.img) embed.setImage(msg.img);
 	message.channel.send(embed)
     } else {
 	const embed = new Discord.MessageEmbed()
