@@ -1,6 +1,5 @@
 const https = require('https');
 const Discord = require('discord.js');
-const got = require('got');
 const url = 'https://www.reddit.com/r/momo/hot/.json?limit=100'
 
 module.exports.run = async (bot, message, args) => {  
@@ -19,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
                 const title = index.title
                 const link = 'https://reddit.com' + index.permalink
                 const subRedditName = index.subreddit_name_prefixed
-                
+
                 console.log(image);
                 const imageembed = new Discord.MessageEmbed()
                     .setTitle(title)
@@ -30,7 +29,8 @@ module.exports.run = async (bot, message, args) => {
             }).on('error', function (e) {
                 console.log('Got an error: ', e)
             })
-   
+        })
+}
 
 module.exports.config = {
     name: "momo",
