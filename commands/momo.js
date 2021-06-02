@@ -1,5 +1,6 @@
 const https = require('https');
 const Discord = require('discord.js');
+const got = require('got');
 const url = 'https://www.reddit.com/r/momo/hot/.json?limit=100'
 
 module.exports.run = async (bot, message, args) => {  
@@ -18,6 +19,10 @@ module.exports.run = async (bot, message, args) => {
                 const title = index.title
                 const link = 'https://reddit.com' + index.permalink
                 const subRedditName = index.subreddit_name_prefixed
+                
+                const [post] = response.data.children;
+                const memeUpvotes = post.data.ups;
+		        const memeNumComments = post.data.num_comments;
 
                 console.log(image);
                 const imageembed = new Discord.MessageEmbed()
@@ -25,12 +30,12 @@ module.exports.run = async (bot, message, args) => {
                     .setImage(image)
                     .setColor(9384170)
                     .setURL(`https://reddit.com/${subRedditName}`)
+                    .setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
                 message.channel.send(imageembed)
             }).on('error', function (e) {
                 console.log('Got an error: ', e)
             })
-        })
-}
+   
 
 module.exports.config = {
     name: "momo",
