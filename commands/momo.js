@@ -1,30 +1,36 @@
+const https = require('https');
 const Discord = require('discord.js');
-const got = require('got');
+const url = 'https://www.reddit.com/r/momo/hot/.json?limit=100'
 
-module.exports.run = async (bot, message, args) => {
-	const embed = new Discord.MessageEmbed();
-	got('https://www.reddit.com/r/MOMO/random/.json')
-		.then(response => {
-			const [list] = JSON.parse(response.body);
-			const [post] = list.data.children;
+module.exports.run = async (bot, message, args) => {  
 
-			const permalink = post.data.permalink;
-			const memeUrl = `https://reddit.com${permalink}`;
-			const memeImage = post.data.url;
-			const memeTitle = post.data.title;
-			const memeUpvotes = post.data.ups;
-			const memeNumComments = post.data.num_comments;
+        https.get(url, (result) => {
+            let body = ''
+            result.on('data', (chunk) => {
+                body += chunk
+            })
 
-			embed.setTitle(`${memeTitle}`);
-			embed.setURL(`${memeUrl}`);
-			embed.setColor('#FFCDD2');
-			embed.setImage(memeImage);
-			embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
+            result.on('end', () => {
+                const response = JSON.parse(body)
+                const index = response.data.children[Math.floor(Math.random() * 99) + 1].data
 
-			message.channel.send(embed);
-		})
-		.catch(console.error);
-};
+                const image = index.preview.images[0].source.url.replace('&amp;', '&')
+                const title = index.title
+                const link = 'https://reddit.com' + index.permalink
+                const subRedditName = index.subreddit_name_prefixed
+
+                console.log(image);
+                const imageembed = new Discord.MessageEmbed()
+                    .setTitle(title)
+                    .setImage(image)
+                    .setColor(9384170)
+                    .setURL(`https://reddit.com/${subRedditName}`)
+                message.channel.send(imageembed)
+            }).on('error', function (e) {
+                console.log('Got an error: ', e)
+            })
+        })
+}
 
 module.exports.config = {
     name: "momo",
