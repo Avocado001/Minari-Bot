@@ -26,7 +26,6 @@ module.exports.run = async (bot, message, args) => {
 		.catch(console.error);
 };
 
-
 module.exports.config = {
     name: "momo",
     description: "Send an image of Hirai Momo",
