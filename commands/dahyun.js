@@ -3,7 +3,7 @@ const got = require('got');
 
 module.exports.run = async (bot, message, args) => {
 	const embed = new Discord.MessageEmbed();
-	got('https://www.reddit.com/r/chaeyoung/random/.json')
+	got('https://www.reddit.com/r/dahyun/random/.json')
 		.then(response => {
 			const [list] = JSON.parse(response.body);
 			const [post] = list.data.children;
