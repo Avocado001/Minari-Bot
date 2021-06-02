@@ -1,49 +1,30 @@
-const https = require('https');
 const Discord = require('discord.js');
-const url = 'https://www.reddit.com/r/dahyun/hot/.json?limit=100'
+const got = require('got');
 
-module.exports.run = async (bot, message, args) => {  
+module.exports.run = async (bot, message, args) => {
+	const embed = new Discord.MessageEmbed();
+	got('https://www.reddit.com/r/chaeyoung/random/.json')
+		.then(response => {
+			const [list] = JSON.parse(response.body);
+			const [post] = list.data.children;
 
-        https.get(url, (result) => {
-            let body = ''
-            result.on('data', (chunk) => {
-                body += chunk
-            })
+			const permalink = post.data.permalink;
+			const memeUrl = `https://reddit.com${permalink}`;
+			const memeImage = post.data.url;
+			const memeTitle = post.data.title;
+			const memeUpvotes = post.data.ups;
+			const memeNumComments = post.data.num_comments;
 
-            result.on('end', () => {
-                const response = JSON.parse(body)
-                const index = response.data.children[Math.floor(Math.random() * 99) + 1].data
-                
-                const image = index.preview.images[0].source.url.replace('&amp;', '&')
-                const title = index.title
-                const link = 'https://reddit.com' + index.permalink
-                const subRedditName = index.subreddit_name_prefixed
+			embed.setTitle(`${memeTitle}`);
+			embed.setURL(`${memeUrl}`);
+			embed.setColor('#FF1744');
+			embed.setImage(memeImage);
+			embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
 
-                if (index.post_hint !== 'image') {
-
-                    const text = index.selftext
-                    const textembed = new Discord.MessageEmbed()
-                        .setTitle(subRedditName)
-                        .setColor(9384170)
-                        .setDescription(`[${title}](${link})\n\n${text}`)
-                        .setURL(`https://reddit.com/${subRedditName}`)
-
-                    message.channel.send(textembed)
-                }
-
-                console.log(image);
-                const imageembed = new Discord.MessageEmbed()
-                    .setTitle(subRedditName)
-                    .setImage(image)
-                    .setColor(9384170)
-                    .setDescription(`[${title}](${link})`)
-                    .setURL(`https://reddit.com/${subRedditName}`)
-                message.channel.send(imageembed)
-            }).on('error', function (e) {
-                console.log('Got an error: ', e)
-            })
-        })
-}
+			message.channel.send(embed);
+		})
+		.catch(console.error);
+};
 
 module.exports.config = {
     name: "dahyun",
