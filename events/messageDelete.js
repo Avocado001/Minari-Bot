@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (message) => {
   try {
     if (message.author.bot) return;
-    const snipes = message.client.snipes.get(message.channel.id) || [];
+    const snipes = message.client.snipes.get(message.channel.id) || [853630480486629376];
     snipes.unshift({
       content: message.content,
       author: message.author,
