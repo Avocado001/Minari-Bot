@@ -1,7 +1,7 @@
 const axios = require('axios')
 const { MessageEmbed } = require('discord.js');
 module.exports = {
-    run: async (bot, message, args) => {
+    run: async (message) => {
         const messageArray = message.content.split(' ');
         const arg = messageArray.slice(1);
         if (!arg[0]) {
