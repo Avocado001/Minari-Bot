@@ -1,7 +1,9 @@
+const { MessageEmbed } = require("discord.js");
+const moment = require('moment');
 module.exports = async (message) => {
   try {
     if (message.author.bot) return;
-    const snipes = message.client.snipes.get(message.channel.id) || [];
+    const snipes = message.client.snipes.get(message.channel.id) || [853630480486629376];
     snipes.unshift({
       content: message.content,
       author: message.author,
@@ -13,6 +15,6 @@ module.exports = async (message) => {
     snipes.splice(10);
     message.client.snipes.set(message.channel.id, snipes);
   } catch (e) {
-    console.log(e);
+	console.log(e);
   }
 };
