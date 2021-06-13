@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 module.exports = async (message) => {
   try {
     if (message.author.bot) return;
-    const snipes = message.client.snipes.get(message.channel.id) || [853630480486629376];
+    const snipes = message.client.snipes.get(message.channel.id) || [];
     snipes.unshift({
       content: message.content,
       author: message.author,
@@ -24,7 +24,7 @@ module.exports = async (message) => {
       .addField(`Content`, message.content, true)
       .setColor(`RED`);
     let channel = message.guild.channels.cache.find(
-      (ch) => ch.name === "ai-training"
+      (ch) => ch.name === "snipers"
     );
     if (!channel) return;
     channel.send(embed);
