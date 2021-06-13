@@ -1,20 +1,32 @@
 const { MessageEmbed } = require("discord.js");
-const moment = require('moment');
 module.exports = async (message) => {
   try {
     if (message.author.bot) return;
-    const snipes = message.client.snipes.get(message.channel.id) || [853630480486629376];
+    const snipes = message.client.snipes.get(message.channel.id) || [];
     snipes.unshift({
       content: message.content,
       author: message.author,
       image: message.attachments.first()
         ? message.attachments.first().proxyURL
         : null,
-      date: moment().utc().utcOffset(8).format('YYYY-MM-DD hh:mm:ss A'),
+      date: new Date().toLocaleString("en-GB", {
+        dataStyle: "full",
+        timeStyle: "short",
+      }),
     });
     snipes.splice(10);
     message.client.snipes.set(message.channel.id, snipes);
-  } catch (e) {
-	console.log(e);
-  }
+    let embed = new MessageEmbed()
+      .setTitle(`New message deleted!`)
+      .setDescription(
+        `**The user ${message.author.tag} has deleted a message in <#${message.channel.id}>**`
+      )
+      .addField(`Content`, message.content, true)
+      .setColor(`RED`);
+    let channel = message.guild.channels.cache.find(
+      (ch) => ch.name === "ai-training"
+    );
+    if (!channel) return;
+    channel.send(embed);
+  } catch (e) {}
 };
