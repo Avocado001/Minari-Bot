@@ -24,6 +24,6 @@
     "random-puppy": "^1.1.0",
     "got": "^11.8.2",
     "http": "^0.0.1-security",
-    "axios: ^0.20.0"
+    "axios": "^0.20.0"
   }
 }
