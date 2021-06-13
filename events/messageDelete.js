@@ -6,8 +6,8 @@ module.exports = async (message) => {
     snipes.unshift({
       content: message.content,
       author: message.author,
-      image: message.attachments.first()
-        ? message.attachments.first().proxyURL
+      image: message.img.first()
+        ? message.img.first().proxyURL
         : null,
       date: new Date().toLocaleString("en-GB", {
         dataStyle: "full",
