@@ -23,6 +23,7 @@
     "ms": "^2.1.2",
     "random-puppy": "^1.1.0",
     "got": "^11.8.2",
-    "http": "^0.0.1-security"
+    "http": "^0.0.1-security",
+    "axios: ^0.20.0"
   }
 }
