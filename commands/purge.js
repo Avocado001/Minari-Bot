@@ -2,7 +2,7 @@ module.exports.run = async (bot, message) => {
     const messageArray = message.content.split(' ');
 	const args = messageArray.slice(1);
 
-    if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send('Lack of Perms!').then(msg => msg.delete({timeout:5000});
+    if (!message.member.permissions.has("MANAGE_MESSAGES")) return message.channel.send('Lack of Perms!');
     
     let deleteAmount;
 
