@@ -10,6 +10,7 @@ module.exports.run = async (bot, message) => {
 
     if (parseInt(args[0]) > 100) {
         return message.reply('You can only delete 100 messages at a time!')
+	.then(msg => msg.delete({timeout:5000}))
     } else {
         deleteAmount = parseInt(args[0]);
     }
