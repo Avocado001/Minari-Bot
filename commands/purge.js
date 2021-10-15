@@ -15,7 +15,7 @@ module.exports.run = async (bot, message) => {
     }
 
     message.channel.bulkDelete(deleteAmount + 1, true);
-    message.reply(`**Minari** Defeated ***${deleteAmount}*** Messages.`)
+    message.reply(`**Minari** Defeated ***${deleteAmount}*** Messages.`).then(msg => msg.delete({timeout:5000}))
 }
 
 module.exports.config = {
